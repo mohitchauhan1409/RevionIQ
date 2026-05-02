@@ -2,8 +2,6 @@ import json
 import threading
 from pathlib import Path
 from typing import Optional
-import chromadb
-from sentence_transformers import SentenceTransformer
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -11,12 +9,15 @@ load_dotenv()
 DATA_PATH = Path(__file__).parent / "data" / "repair_cases.json"
 CHROMA_PATH = Path(__file__).parent / "chroma_db"
 
-_model: Optional[SentenceTransformer] = None
+# Heavy ML libs (torch, transformers, chromadb) are imported lazily so the
+# process binds its port before any slow initialization runs.
+_model = None  # SentenceTransformer, loaded on first use
 
 
-def _get_model() -> SentenceTransformer:
+def _get_model():
     global _model
     if _model is None:
+        from sentence_transformers import SentenceTransformer
         _model = SentenceTransformer("all-MiniLM-L6-v2")
     return _model
 
@@ -39,6 +40,7 @@ def _case_to_text(case: dict) -> str:
 
 class VectorStore:
     def __init__(self):
+        import chromadb
         self.client = chromadb.PersistentClient(path=str(CHROMA_PATH))
         self.collection = self.client.get_or_create_collection(
             name="repair_cases",

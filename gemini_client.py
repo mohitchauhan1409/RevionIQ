@@ -1,11 +1,20 @@
 import os
 import re
-import google.generativeai as genai
 from dotenv import load_dotenv
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+# google.generativeai (grpcio, protobuf) is imported lazily to keep startup fast.
+_genai_module = None
+
+
+def _genai():
+    global _genai_module
+    if _genai_module is None:
+        import google.generativeai as genai
+        genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+        _genai_module = genai
+    return _genai_module
 
 # System instruction — passed via system_instruction, NOT as a user message
 _SYSTEM_INSTRUCTION = """You are Revion IQ, a voice assistant in an automotive repair bay. You talk to technicians while they work on cars.
@@ -31,18 +40,12 @@ Network cases: {similar_cases}
 Already captured: {captured}
 Still need: {missing_fields}"""
 
-_GENERATION_CONFIG = genai.GenerationConfig(
-    temperature=0.35,
-    max_output_tokens=80,
-)
-
-
-def _build_model(context: str) -> genai.GenerativeModel:
-    """Build a model with system_instruction so it never leaks into responses."""
+def _build_model(context: str):
+    genai = _genai()
     return genai.GenerativeModel(
         model_name="gemini-2.0-flash",
         system_instruction=_SYSTEM_INSTRUCTION + "\n\n" + context,
-        generation_config=_GENERATION_CONFIG,
+        generation_config=genai.GenerationConfig(temperature=0.35, max_output_tokens=80),
     )
 
 
@@ -125,6 +128,7 @@ def extract_section_content(
         for m in conversation_segment
     )
 
+    genai = _genai()
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash",
         generation_config=genai.GenerationConfig(temperature=0.2, max_output_tokens=200),
@@ -154,6 +158,7 @@ def check_completeness(
         "c3": ["part replaced named", "part number present", "road test mentioned", "DTC clearance confirmed"],
     }
 
+    genai = _genai()
     model = genai.GenerativeModel(
         model_name="gemini-2.0-flash",
         generation_config=genai.GenerationConfig(temperature=0, max_output_tokens=60),
