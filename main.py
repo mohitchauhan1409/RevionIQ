@@ -1,3 +1,4 @@
+import asyncio
 import base64
 import json
 import os
@@ -63,14 +64,19 @@ def _load_jobs():
     return {}
 
 
+def _warm_store():
+    store = get_vector_store()
+    print(f"[iq-api] ChromaDB ready — {store.case_count} repair cases indexed")
+
+
 @app.on_event("startup")
 async def startup():
     global _jobs
-    # Load vector store (builds ChromaDB index on first run)
-    store = get_vector_store()
-    print(f"[iq-api] ChromaDB loaded — {store.case_count} repair cases indexed")
     _jobs = _load_jobs()
     print(f"[iq-api] Loaded {len(_jobs)} jobs")
+    # Warm vector store in background so the port opens immediately
+    loop = asyncio.get_event_loop()
+    asyncio.ensure_future(loop.run_in_executor(None, _warm_store))
 
 
 # ─── Models ───────────────────────────────────────────────────────────────────
@@ -88,7 +94,8 @@ class TurnRequest(BaseModel):
 
 @app.get("/api/health")
 async def health():
-    store = get_vector_store()
+    loop = asyncio.get_event_loop()
+    store = await loop.run_in_executor(None, get_vector_store)
     return {
         "status": "ok",
         "vector_db_cases": store.case_count,
@@ -117,7 +124,8 @@ async def start_session(body: StartSessionRequest):
         raise HTTPException(404, f"Job {body.job_id} not found")
 
     session_id = str(uuid.uuid4())
-    engine = IQEngine(job)
+    loop = asyncio.get_event_loop()
+    engine = await loop.run_in_executor(None, lambda: IQEngine(job))
     _sessions[session_id] = engine
 
     greeting = engine._greeting_message()
