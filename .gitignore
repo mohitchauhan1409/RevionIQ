@@ -1,0 +1,29 @@
+# Python virtual env
+venv/
+
+# Environment variables (VERY IMPORTANT)
+.env
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Mac files
+.DS_Store
+
+# VS Code (optional)
+.vscode/
+
+# Logs
+*.log
+
+# Database / vector DB (IMPORTANT for you)
+chroma_db/
+
+# Temp files
+*.sqlite3
+*.db
+
+# Build / dist
+build/
+dist/

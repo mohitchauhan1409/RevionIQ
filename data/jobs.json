@@ -1,0 +1,301 @@
+{
+  "dealership": {
+    "name": "Mercedes-Benz of Plano",
+    "group": "Ewing Automotive Group",
+    "location": "Plano, TX"
+  },
+  "jobs": [
+    {
+      "id": "job_001",
+      "ro_number": "RO-48271",
+      "status": "in_progress",
+      "priority": "normal",
+      "vehicle": {
+        "make": "BMW",
+        "model": "3 Series",
+        "year": 2021,
+        "mileage": 55243,
+        "color": "Alpine White",
+        "vin": "WBA5R7C04LE",
+        "engine": "2.0L B48"
+      },
+      "fault_codes": [
+        "P0301"
+      ],
+      "customer_complaint": "Engine shaking, check engine light on",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 2.0,
+      "c1": "Customer states the heater is not working at all. The check engine light is on constantly.",
+      "c2": "Confirmed DTC P0420 active. Diagnostic testing led to the identification of a faulty catalytic converter. Replacing the catalytic converter.",
+      "c3": "",
+      "story_complete": false
+    },
+    {
+      "id": "job_002",
+      "ro_number": "RO-48272",
+      "status": "complete",
+      "priority": "urgent",
+      "vehicle": {
+        "make": "Mercedes-Benz",
+        "model": "C-Class",
+        "year": 2022,
+        "mileage": 31000,
+        "color": "Obsidian Black",
+        "vin": "W1KWF8EB0NR",
+        "engine": "2.0L M254"
+      },
+      "fault_codes": [
+        "P0128"
+      ],
+      "customer_complaint": "Engine slow to warm up, poor fuel economy",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 1.5,
+      "c1": "Customer states the heater is not working at all. The technician confirmed whether the check engine light is on.",
+      "c2": "Thermostat is stuck open. Coolant temperature reached 65 degrees Celsius, while the specified temperature is 90 degrees Celsius. Replaced thermostat with part number A254200XXXX.",
+      "c3": "Road test performed, everything working fine. Part number A254200XXXX confirmed. DTC clearance confirmed.",
+      "story_complete": true
+    },
+    {
+      "id": "job_003",
+      "ro_number": "RO-48269",
+      "status": "complete",
+      "priority": "normal",
+      "vehicle": {
+        "make": "Toyota",
+        "model": "Camry",
+        "year": 2021,
+        "mileage": 72000,
+        "color": "Midnight Black",
+        "vin": "4T1B11HK8MU",
+        "engine": "2.5L A25A"
+      },
+      "fault_codes": [
+        "P0420"
+      ],
+      "customer_complaint": "Check engine light on, no drivability issues",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 3.2,
+      "c1": "Customer reports MIL illuminated. No noticeable drivability concerns. Vehicle passed emissions 6 months ago.",
+      "c2": "DTC P0420 confirmed. Post-cat O2 waveform showing switching activity matching pre-cat sensor \u2014 catalyst efficiency loss below threshold. No upstream exhaust leaks found.",
+      "c3": "Replaced catalytic converter bank 1 (Part #25051-0P120). Toyota full drive cycle completed. P0420 monitor passed. No fault codes present.",
+      "story_complete": true
+    },
+    {
+      "id": "job_004",
+      "ro_number": "RO-48273",
+      "status": "waiting",
+      "priority": "normal",
+      "vehicle": {
+        "make": "Ford",
+        "model": "F-150",
+        "year": 2022,
+        "mileage": 48000,
+        "color": "Oxford White",
+        "vin": "1FTEW1EP5NK",
+        "engine": "3.5L EcoBoost"
+      },
+      "fault_codes": [
+        "P0171"
+      ],
+      "customer_complaint": "Rough idle and hesitation on acceleration",
+      "technician": {
+        "id": "tech_002",
+        "name": "James R..",
+        "badge": "SM"
+      },
+      "estimated_hours": 2.8,
+      "c1": "",
+      "c2": "",
+      "c3": "",
+      "story_complete": false
+    },
+    {
+      "id": "job_005",
+      "ro_number": "RO-48274",
+      "status": "complete",
+      "priority": "urgent",
+      "vehicle": {
+        "make": "Audi",
+        "model": "A4",
+        "year": 2021,
+        "mileage": 38000,
+        "color": "Daytona Grey",
+        "vin": "WAUZZZF40MA",
+        "engine": "2.0L EA888"
+      },
+      "fault_codes": [
+        "P0299"
+      ],
+      "customer_complaint": "Significant power loss especially on motorway",
+      "technician": {
+        "id": "tech_002",
+        "name": "James R..",
+        "badge": "SM"
+      },
+      "estimated_hours": 1.1,
+      "c1": "Customer states the engine was hot. Warning lights were illuminated on the dash.",
+      "c2": "Confirmed P0299 DTC. Boost pressure measured at 65 PDSI. Split charge air is common.",
+      "c3": "Replaced the engine, part number 28251. Road test and DTC clearance confirmed.",
+      "story_complete": true
+    },
+    {
+      "id": "job_006",
+      "ro_number": "RO-48275",
+      "status": "waiting",
+      "priority": "normal",
+      "vehicle": {
+        "make": "BMW",
+        "model": "X5",
+        "year": 2020,
+        "mileage": 45000,
+        "color": "Black Sapphire",
+        "vin": "WBA123456789",
+        "engine": "3.0L B58"
+      },
+      "fault_codes": [
+        "P0442"
+      ],
+      "customer_complaint": "Check engine light, smells like gas",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 1.5,
+      "c1": "",
+      "c2": "",
+      "c3": "",
+      "story_complete": false
+    },
+    {
+      "id": "job_007",
+      "ro_number": "RO-48276",
+      "status": "in_progress",
+      "priority": "urgent",
+      "vehicle": {
+        "make": "Mercedes-Benz",
+        "model": "GLE 350",
+        "year": 2021,
+        "mileage": 28000,
+        "color": "Polar White",
+        "vin": "WBA987654321",
+        "engine": "2.0L M264"
+      },
+      "fault_codes": [
+        "P0302",
+        "P0300"
+      ],
+      "customer_complaint": "Engine runs very rough, flashing engine light",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 3.0,
+      "c1": "",
+      "c2": "",
+      "c3": "",
+      "story_complete": false
+    },
+    {
+      "id": "job_008",
+      "ro_number": "RO-48277",
+      "status": "waiting",
+      "priority": "normal",
+      "vehicle": {
+        "make": "Audi",
+        "model": "Q5",
+        "year": 2019,
+        "mileage": 62000,
+        "color": "Navarra Blue",
+        "vin": "WAU123456789",
+        "engine": "2.0L EA888"
+      },
+      "fault_codes": [
+        "P2181"
+      ],
+      "customer_complaint": "Cooling system malfunction warning",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 2.0,
+      "c1": "",
+      "c2": "",
+      "c3": "",
+      "story_complete": false
+    },
+    {
+      "id": "job_009",
+      "ro_number": "RO-48278",
+      "status": "waiting",
+      "priority": "normal",
+      "vehicle": {
+        "make": "Toyota",
+        "model": "Highlander",
+        "year": 2022,
+        "mileage": 15000,
+        "color": "Magnetic Gray",
+        "vin": "JTD123456789",
+        "engine": "3.5L 2GR-FKS"
+      },
+      "fault_codes": [
+        "P0171",
+        "P0174"
+      ],
+      "customer_complaint": "Vehicle hesitates on acceleration",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 2.5,
+      "c1": "",
+      "c2": "",
+      "c3": "",
+      "story_complete": false
+    },
+    {
+      "id": "job_010",
+      "ro_number": "RO-48279",
+      "status": "waiting",
+      "priority": "urgent",
+      "vehicle": {
+        "make": "Porsche",
+        "model": "Macan S",
+        "year": 2020,
+        "mileage": 35000,
+        "color": "Carmine Red",
+        "vin": "WP0123456789",
+        "engine": "3.0L V6"
+      },
+      "fault_codes": [
+        "P1A04"
+      ],
+      "customer_complaint": "Transmission slipping between 2nd and 3rd",
+      "technician": {
+        "id": "tech_001",
+        "name": "James R.",
+        "badge": "JR"
+      },
+      "estimated_hours": 4.5,
+      "c1": "Customer states the brake failed. A warning light was constantly illuminated.",
+      "c2": "DTC confirmed. Root cause identified as the brake not being replaced for a long time. Part number 28280011426 was used for the replacement.",
+      "c3": "",
+      "story_complete": false
+    }
+  ]
+}
